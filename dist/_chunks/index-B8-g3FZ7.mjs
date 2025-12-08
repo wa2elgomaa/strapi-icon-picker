@@ -16,7 +16,7 @@ const __variableDynamicImportRuntimeHelper = (glob, path, segs) => {
     );
   });
 };
-const PLUGIN_ID = "icon-picker";
+const PLUGIN_ID = "strapi-icon-picker";
 const Initializer = ({ setPlugin }) => {
   const ref = useRef(setPlugin);
   useEffect(() => {
@@ -31,7 +31,7 @@ const PluginIcon = () => /* @__PURE__ */ jsxs("svg", { width: "20px", height: "2
 ] });
 const getTrad = (id) => `${PLUGIN_ID}.${id}`;
 const strapi = {
-  name: "icon-picker"
+  name: "strapi-icon-picker"
 };
 const pluginPkg = {
   strapi
@@ -54,8 +54,8 @@ const index = {
       },
       components: {
         Input: async () => import(
-          /* webpackChunkName: "icon-picker-input-component" */
-          "./index-BVrSQ4yt.mjs"
+          /* webpackChunkName: "strapi-icon-picker-input-component" */
+          "./index-C-uOH7DP.mjs"
         )
       },
       options: {
@@ -91,12 +91,12 @@ const index = {
         defaultMessage: name
       },
       Component: async () => {
-        const { App } = await import("./App-BhdHat_M.mjs");
+        const { App } = await import("./App-CZCPtRjy.mjs");
         return App;
       },
       permissions: [
         {
-          action: "plugin::icon-picker.read",
+          action: "plugin::strapi-icon-picker.read",
           subject: null
         }
       ]
@@ -111,7 +111,7 @@ const index = {
   async registerTrads({ locales }) {
     const importedTrads = await Promise.all(
       locales.map((locale) => {
-        return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "./translations/en.json": () => import("./en-DZdRsZSC.mjs") }), `./translations/${locale}.json`, 3).then(({ default: data }) => {
+        return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "./translations/en.json": () => import("./en-B3QIE5Ui.mjs") }), `./translations/${locale}.json`, 3).then(({ default: data }) => {
           return {
             data,
             locale

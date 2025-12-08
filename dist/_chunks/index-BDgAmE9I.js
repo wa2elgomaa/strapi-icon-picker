@@ -17,7 +17,7 @@ const __variableDynamicImportRuntimeHelper = (glob, path, segs) => {
     );
   });
 };
-const PLUGIN_ID = "icon-picker";
+const PLUGIN_ID = "strapi-icon-picker";
 const Initializer = ({ setPlugin }) => {
   const ref = React.useRef(setPlugin);
   React.useEffect(() => {
@@ -32,7 +32,7 @@ const PluginIcon = () => /* @__PURE__ */ jsxRuntime.jsxs("svg", { width: "20px",
 ] });
 const getTrad = (id) => `${PLUGIN_ID}.${id}`;
 const strapi = {
-  name: "icon-picker"
+  name: "strapi-icon-picker"
 };
 const pluginPkg = {
   strapi
@@ -55,8 +55,8 @@ const index = {
       },
       components: {
         Input: async () => Promise.resolve().then(() => require(
-          /* webpackChunkName: "icon-picker-input-component" */
-          "./index-CQMBnXgO.js"
+          /* webpackChunkName: "strapi-icon-picker-input-component" */
+          "./index-CaI25lop.js"
         ))
       },
       options: {
@@ -92,12 +92,12 @@ const index = {
         defaultMessage: name
       },
       Component: async () => {
-        const { App } = await Promise.resolve().then(() => require("./App-CPlAPl3g.js"));
+        const { App } = await Promise.resolve().then(() => require("./App-CY7zYsUQ.js"));
         return App;
       },
       permissions: [
         {
-          action: "plugin::icon-picker.read",
+          action: "plugin::strapi-icon-picker.read",
           subject: null
         }
       ]
@@ -112,7 +112,7 @@ const index = {
   async registerTrads({ locales }) {
     const importedTrads = await Promise.all(
       locales.map((locale) => {
-        return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "./translations/en.json": () => Promise.resolve().then(() => require("./en-2t_VCFKF.js")) }), `./translations/${locale}.json`, 3).then(({ default: data }) => {
+        return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "./translations/en.json": () => Promise.resolve().then(() => require("./en-Cfx4hgSk.js")) }), `./translations/${locale}.json`, 3).then(({ default: data }) => {
           return {
             data,
             locale

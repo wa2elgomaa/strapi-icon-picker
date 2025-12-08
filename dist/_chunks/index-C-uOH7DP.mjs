@@ -5,7 +5,7 @@ import { useFetchClient, useField } from "@strapi/strapi/admin";
 import { R as ReactIcons } from "./all-DnRgLQ7X.mjs";
 import { BiSearch, BiMinus, BiPlus } from "react-icons/bi";
 import { useIntl } from "react-intl";
-import { g as getTrad } from "./index-FsTDOKN7.mjs";
+import { g as getTrad } from "./index-B8-g3FZ7.mjs";
 import { IconContext } from "react-icons/lib";
 const strapiTheme = window.localStorage.STRAPI_THEME;
 const IconComponent = ({ icon, size }) => {
@@ -55,7 +55,7 @@ const ReactIconsSelector = ({
   useEffect(() => {
     const getIconLibraries = async () => {
       setIconLibraries(
-        (await get("/icon-picker/iconlibrary/find")).data.filter(
+        (await get("/strapi-icon-picker/iconlibrary/find")).data.filter(
           (iconLibrary) => iconLibrary.isEnabled
         )
       );

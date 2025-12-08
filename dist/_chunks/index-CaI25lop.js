@@ -7,7 +7,7 @@ const admin = require("@strapi/strapi/admin");
 const all = require("./all-SkrwsBgI.js");
 const bi = require("react-icons/bi");
 const reactIntl = require("react-intl");
-const index = require("./index-BcndunK0.js");
+const index = require("./index-BDgAmE9I.js");
 const lib = require("react-icons/lib");
 const _interopDefault = (e) => e && e.__esModule ? e : { default: e };
 const React__default = /* @__PURE__ */ _interopDefault(React);
@@ -59,7 +59,7 @@ const ReactIconsSelector = ({
   React.useEffect(() => {
     const getIconLibraries = async () => {
       setIconLibraries(
-        (await get("/icon-picker/iconlibrary/find")).data.filter(
+        (await get("/strapi-icon-picker/iconlibrary/find")).data.filter(
           (iconLibrary) => iconLibrary.isEnabled
         )
       );

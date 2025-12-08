@@ -3,9 +3,9 @@ const bootstrap = async ({ strapi }) => {
   const actions = [
     {
       section: "plugins",
-      displayName: "Access icon-picker menu",
+      displayName: "Access strapi-icon-picker menu",
       uid: "read",
-      pluginName: "icon-picker"
+      pluginName: "strapi-icon-picker"
     }
   ];
   await strapi.admin?.services.permission.actionProvider.registerMany(actions);
@@ -15,7 +15,7 @@ const destroy = ({ strapi }) => {
 const register = ({ strapi }) => {
   strapi.customFields.register({
     name: "icon",
-    plugin: "icon-picker",
+    plugin: "strapi-icon-picker",
     type: "string"
   });
 };
@@ -73,7 +73,7 @@ const iconlibrary = {
 const contentTypes = {
   iconlibrary
 };
-const getService = (strapi) => strapi.plugin("icon-picker").service("iconLibraryService");
+const getService = (strapi) => strapi.plugin("strapi-icon-picker").service("iconLibraryService");
 const iconLibraryController = ({ strapi }) => ({
   async find(ctx) {
     try {
@@ -137,7 +137,7 @@ const routes = [
     config: { policies: [] }
   }
 ];
-const USER_MODEL_UID = "plugin::icon-picker.iconlibrary";
+const USER_MODEL_UID = "plugin::strapi-icon-picker.iconlibrary";
 const iconLibraryService = ({ strapi }) => ({
   async find(query) {
     return await strapi.documents(USER_MODEL_UID).findMany(query);
