@@ -171,3 +171,4 @@ const methods = {
   middlewares
 };
 module.exports = methods;
+//# sourceMappingURL=index.js.map

@@ -12,3 +12,4 @@ const en = {
   "strapi-icon-picker.iconSelector.search": "Search icons..."
 };
 exports.default = en;
+//# sourceMappingURL=en-Cfx4hgSk.js.map

@@ -172,3 +172,4 @@ const methods = {
 export {
   methods as default
 };
+//# sourceMappingURL=index.mjs.map

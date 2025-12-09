@@ -12,3 +12,4 @@ const en = {
 export {
   en as default
 };
+//# sourceMappingURL=en-B3QIE5Ui.mjs.map

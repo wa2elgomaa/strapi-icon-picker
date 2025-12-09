@@ -89,3 +89,4 @@ const ReactIcons = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null
 }, [ci__namespace, fa6__namespace, io5__namespace, md__namespace, ti__namespace, go__namespace, fi__namespace, gi__namespace, wi__namespace, di__namespace, ai__namespace, bs__namespace, ri__namespace, fc__namespace, gr__namespace, hi2__namespace, si__namespace, sl__namespace, im__namespace, bi__namespace, cg__namespace, vsc__namespace, tb__namespace, tfi__namespace, rx__namespace]);
 exports.ReactIcons = ReactIcons;
+//# sourceMappingURL=all-SkrwsBgI.js.map

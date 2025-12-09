@@ -63,7 +63,7 @@
     "displayName": "Icon Picker",
     "description": ""
   },
-  "name": "strapi-icon-picker",
+  "name": "@pixelplusone/strapi-icon-picker",
   "description": "",
   "license": "MIT",
   "author": "Wael Gomaa <wg_gomaa@hotmail.com>"

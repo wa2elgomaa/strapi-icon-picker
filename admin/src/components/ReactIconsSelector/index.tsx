@@ -8,7 +8,7 @@ import {
   Flex,
   Modal,
   // Searchbar,
-  // SearchForm,
+  SearchForm,
   SingleSelect as Select,
   SingleSelectOption as Option,
   TextInput,
@@ -42,7 +42,6 @@ const ReactIconsSelector = ({
   //   // description, error, label,labelAction, placeholder, name, required, onChange, value
   //   hint, disabled, labelAction, label, name, required, ...props
   // } = props || {};
-  console.log('props ==>', props);
   const { formatMessage } = useIntl();
   const { get } = useFetchClient();
   const iconPickerButtonRef = React.useRef<HTMLButtonElement>(null!);
@@ -84,22 +83,25 @@ const ReactIconsSelector = ({
   };
 
   const handleExpand = () => {
-    if (iconLibraries.length === expandedIDs.length) {
+    console.log("exppp ", expandedIDs)
+    if (expandedIDs.length) {
       setExpandedID([]);
     } else {
-      setExpandedID(iconLibraries.map((iconLibrary, index) => 'acc-' + index));
+      setExpandedID(iconLibraries.map(({ id }) => id));
     }
   };
 
-  const renderModal = () => {
+  const renderModal = (selectedIcon: string) => {
+    const DynamicIconComponent = ReactIcons[selectedIcon as IReactIcon];
+
     return (
       <Modal.Root
         defaultOpen={isModalVisible}
         open={isModalVisible}
         onOpenChange={setIsModalVisible}
       >
-        <Modal.Trigger style={{ padding: '3px' }}>
-          <BiSearch width={30} height={30} style={{ cursor: 'pointer' }} />
+        <Modal.Trigger>
+          {typeof DynamicIconComponent !== 'undefined' ? <DynamicIconComponent size={30} style={{ cursor: 'pointer', width: 30, height: 30 }} /> : <BiSearch width={30} height={30} style={{ cursor: 'pointer', width: 30, height: 30 }} />}
         </Modal.Trigger>
         <Modal.Content>
           <Modal.Header>
@@ -109,60 +111,63 @@ const ReactIconsSelector = ({
           </Modal.Header>
           <Modal.Body>
             <Box>
-              {/* <SearchForm> */}
-              <Flex gap={2}>
-                <Box key={1}>
-                  <TextInput
-                    onReset={() => setSearchTerm('')}
-                    value={searchTerm}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setSearchTerm(e.target.value)
-                    }
-                    placeholder={formatMessage({
-                      id: getTrad('iconSelector.search'),
-                    })}
-                  />
-                </Box>
-                <Box key={2}>
-                  {iconLibraries.length === expandedIDs.length ? (
-                    <Button size="L" onClick={handleExpand} startIcon={<BiMinus />}>
-                      Collapse
-                    </Button>
-                  ) : (
-                    <Button size="L" onClick={handleExpand} startIcon={<BiPlus />}>
-                      Expand
-                    </Button>
-                  )}
-                </Box>
-              </Flex>
-              {/* </SearchForm> */}
+              <SearchForm>
+                <Flex gap={2}>
+                  <Box key={1}>
+                    <TextInput
+                      onReset={() => setSearchTerm('')}
+                      value={searchTerm}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setSearchTerm(e.target.value)
+                      }
+                      placeholder={formatMessage({
+                        id: getTrad('iconSelector.search'),
+                      })}
+                    />
+                  </Box>
+                  <Box key={2}>
+                    {/* {expandedIDs.length ? (
+                      <Button size="L" onClick={handleExpand} startIcon={<BiMinus />}>
+                        Collapse All
+                      </Button>
+                    ) : (
+                      <Button size="L" onClick={handleExpand} startIcon={<BiPlus />}>
+                        Expand All
+                      </Button>
+                    )} */}
+                  </Box>
+                </Flex>
+              </SearchForm>
 
               {iconLibraries.length > 0 ? (
                 <Box padding={4} marginTop={2} background="neutral0">
-                  <Accordion.Root collapsible>
+                  <Accordion.Root
+                    collapsible
+                    defaultValue={`acc-${expandedIDs[0]}`}
+                  >
                     {iconLibraries
                       .filter(
                         (iconLibrary) =>
                           !selectedIconLibrary || iconLibrary.abbreviation === selectedIconLibrary
                       )
                       .map(
-                        (iconLibrary, index) =>
+                        (iconLibrary) =>
                           allReactIcons.filter(
                             (icon) =>
                               icon.toLowerCase().startsWith(iconLibrary.abbreviation) &&
                               icon.toLowerCase().includes(searchTerm.toLowerCase())
                           ).length > 0 && (
                             <Accordion.Item
-                              value={'acc-' + index}
-                              // expanded={expandedIDs.includes('acc-' + index)}
-                              onClick={() => handleToggle('acc-' + index)}
-                              id={'acc-' + index}
-                              // size="S"
+                              value={`acc-${iconLibrary.id}`}
+                              expanded={expandedIDs.includes(iconLibrary.id)}
+                              onClick={() => handleToggle(iconLibrary.id)}
+                              id={iconLibrary.id}
+                            // size="S"
                             >
                               <Accordion.Header>
                                 <Accordion.Trigger
                                   caretPosition="left"
-                                  // icon={User}
+                                // icon={User}
                                 >
                                   <Flex justifyContent={'space-between'}>
                                     <Typography>{`${iconLibrary.name} (${iconLibrary.abbreviation})`}</Typography>
@@ -247,10 +252,10 @@ const ReactIconsSelector = ({
               id: getTrad('color-picker.input.aria-label'),
               defaultMessage: 'Color picker input',
             })}
-            // style={{ textTransform: 'uppercase' }}
+            style={{ /*textTransform: 'uppercase',*/ }}
             name={name}
             onChange={field.onChange}
-            startAction={renderModal()}
+            startAction={renderModal(selectedIcon)}
           />
           <Field.Hint />
           <Field.Error />

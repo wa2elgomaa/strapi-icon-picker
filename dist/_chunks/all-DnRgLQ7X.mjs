@@ -48,3 +48,4 @@ const ReactIcons = /* @__PURE__ */ _mergeNamespaces({
 export {
   ReactIcons as R
 };
+//# sourceMappingURL=all-DnRgLQ7X.mjs.map
